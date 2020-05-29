@@ -36,12 +36,24 @@ class CatForm extends Component {
 
     render() {
         return (
-           <form onSubmit = {this.handleSubmit} autoComplete='off'>
-               <input name='name' placeholder="Name" value={this.state.name} onChange = {this.handleInputChange} /> <br />
-               <input name='food' placeholder="Food" value={this.state.food} onChange = {this.handleInputChange} /> <br />
-               <input name='image' placeholder="Image" value={this.state.image} onChange = {this.handleInputChange} /> <br />
-               <button type="submit">Submit </button>
+        <div className="container mt-3">
+            <h3 className='text-center'>Cica hozzáadó</h3>
+            <form onSubmit = {this.handleSubmit} autoComplete='off'>
+               {/* <input name='name' placeholder="Név" value={this.state.name} onChange = {this.handleInputChange} class="form-control" id="inputName" /> <br /> */}
+               <div class="form-group">
+                    <label for="inputName">Név</label>
+                    <input name='name' value={this.state.name} onChange = {this.handleInputChange} class="form-control" id="inputName" />
+                    <small id="help" class="form-text text-muted mb-3">Sosem adjuk ki cica nevedet.</small>
+             
+                    <label for="inputFood">Étel</label>
+                    <input placeholder="Kitekat! Semmicicó." name='food' value={this.state.food} onChange = {this.handleInputChange} class="form-control mb-3" id="inputFood" />
+                    
+                    <label for="inputImage">Kép</label>
+                    <input name='image' placeholder="https://..." value={this.state.image} onChange = {this.handleInputChange} class="form-control" id='inputImage' /> <br />
+                </div>
+                <button className='btn btn-info' type="submit">Hozzáadás </button>
            </form>
+        </div>
         )
     }
 }

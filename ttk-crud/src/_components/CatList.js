@@ -18,23 +18,24 @@ class CatList extends Component {
         return (
             <div>
                 <CatForm />
-                <hr />
-                <p>List of cats</p>
-                <table>
-                    <tbody>
-                        {/* hozzadas, edit */}
+                <h3 className='text-center'>Cicák listázása</h3>
+                <div className='container'>
                         {
                             this.props.list.map( (item, index) => {
-                                return <tr key = {index}>
-                                        <td>{item.name}</td>
-                                        <td>{item.image}</td>
-                                        <td><button onClick = { () => this.handleEdit(index)}>Edit</button></td>
-                                        <td><button onClick = { () => this.handleDelete(index)}>Delete</button></td>
-                                </tr>
+                                return <div key = {index} className="card mx-auto" style={{margin: '0 auto', float: 'none'}} >
+                                            <img class="card-img-top" src={item.image} style={{width : '18rem'}} alt="Card image cap"/>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <div>{item.name}</div>
+                                                <div>
+                                                    <button className="btn btn-warning mr-3 mt-1" onClick = { () => this.handleEdit(index)}>Edit</button>
+                                                    <button className="btn btn-danger mt-1" onClick = { () => this.handleDelete(index)}>Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
                             })
                         }
-                    </tbody>
-                </table>
+                </div> 
             </div>
         )
     }
