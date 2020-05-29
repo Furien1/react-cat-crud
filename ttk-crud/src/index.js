@@ -3,10 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { catReducer } from './_reducers/catReducer';
+
+// localStorage-ban letrehozas
+if (localStorage.getItem('cats') == null)
+    localStorage.setItem('cats', JSON.stringify([]))
+    
+let initialState = {
+  currentIndex : -1,
+  list : JSON.parse(localStorage.getItem('cats'))
+}
+
+var store = createStore(catReducer,initialState)
 
 ReactDOM.render(
   <React.StrictMode>
+  <Provider store={store}>
     <App />
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
