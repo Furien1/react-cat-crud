@@ -17,6 +17,11 @@ class CatForm extends Component {
         else 
             return this.props.list[this.props.currentIndex]
     }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.currentIndex != this.props.currentIndex || prevProps.list.length != this.props.list.length)
+        this.setState({ ...this.returnStateObject() })
+    }
     
     //handleChange
     handleInputChange = e => {
